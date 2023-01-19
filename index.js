@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 mongoose.set('strictQuery', false);
 const dotenv = require("dotenv")
 const authRoute = require("./routes/user.routes")
+const bugRoute = require("./routes/bugs.route")
 const PORT = process.env.PORT || 8080
 dotenv.config()
 const app = express()
@@ -16,6 +17,7 @@ mongoose.connect(process.env.MONGO_DB)
 // all api's
 app.use(express.json())
   app.use("/api/auth",authRoute)
+  app.use("/api/dashboard",bugRoute)
 
 
 app.listen(PORT, () => {
